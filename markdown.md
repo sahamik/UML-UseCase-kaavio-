@@ -1,2 +1,0 @@
-
-UseCase- kaavion piirtäminen
