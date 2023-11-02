@@ -95,12 +95,6 @@ function viewVoteDetails(vote) {
         voteView.appendChild(label);
         voteView.appendChild(document.createElement("br"));
     }
-    const voteBtn = document.createElement("button");
-    voteBtn.textContent = "Äänestä";
-    voteBtn.addEventListener("click", () => {
-        castVote(vote);
-    });
-    voteView.appendChild(voteBtn);
 
     const resultsButton = document.createElement("button");
     resultsButton.textContent = "Katso äänestystilanne";

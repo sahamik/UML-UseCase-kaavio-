@@ -4,7 +4,7 @@ Käyttötapauskuvaukset
 
 Browse votes
 
-- Käyttäjä: Vierailija ja ylläpitäjä
+- Käyttäjä: Vierailija/Ylläpitäjä
 - Laukaisija: Kun sovellus avataan.
 - Esiehto: Jos käyttäjä on vierailija --> Pystyy selaamaan äänestyksiä, näkee äänestystilanteen sekä pystyy         äänestämään.
            Jos ylläpitäjä kirjautuu sisään linkin kautta --> Pystyy selaamaan äänestyksiä sekä tekemään muutoksia äänestyksiin.
@@ -21,13 +21,13 @@ Browse votes
 
 Select vote
 
-- Käyttäjä: Vierailija
-- Laukaisija: Vierailija valitsee äänestyslistasta äänestyksen
-- Esiehto: Vierailija on valinnut äänestyksen
-- Jälkiehto: Vierailija näkee äänestyksen
-- Käyttötapauksen kulku: 1. Vierailija valitsee äänestyslistalta äänestyksen
+- Käyttäjä: Vierailija/Ylläpitäjä
+- Laukaisija: Vierailija/Ylläpitäjä valitsee äänestyslistasta äänestyksen
+- Esiehto: Vierailija/Ylläpitäjä on valinnut äänestyksen
+- Jälkiehto: Vierailija/Ylläpitäjä näkee äänestyksen
+- Käyttötapauksen kulku: 1. Vierailija/Ylläpitäjä valitsee äänestyslistalta äänestyksen
                          2. Sovellus näyttää äänestyksen
-                         3. Vierailija voi katsoa äänestyksen äänestystilanteen tai äänestää sitä
+                         3. Vierailija voi katsoa äänestyksen äänestystilanteen tai äänestää sitä ja ylläpitäjä voikatsoa äänestystilanteen tai poistaa äänestyksen
 
 
 Vote
@@ -37,17 +37,16 @@ Vote
 - Esiehto: Vierailija on valinnut äänestyksen
 - Jälkiehto: Vierailija on äänestänyt
 - Käyttötapauksen kulku: 1. Vierailija äänestää valitsemaansa äänestystä
-- Poikkeuksellinen toiminta: Jos käyttäjä yrittää äänestää samaa äänestystä, jota on jo äänestänyt näytetään virheilmoitus "Olet jo äänestänyt kyseiseen äänestykseen!"
 
 
 Show voting status
 
-- Käyttäjä: Vierailija
-- Laukaisija: Vierailija on valitsee näytä äänestystilanne
-- Esiehto: Vierailija on valinnut äänestyksen
-- Jälkiehto: vierailija näkee äänestystilanteen
-- Käyttötapauksen kulku: 1. Vierailija valitsee äänestyksen
-                         2. Vierailija valitsee äänestyksen tilanteen
+- Käyttäjä: Vierailija/Ylläpitäjä
+- Laukaisija: Vierailija/Ylläpitäjä on valitsee näytä äänestystilanne
+- Esiehto: Vierailija/Ylläpitäjä on valinnut äänestyksen
+- Jälkiehto: Vierailija/Ylläpitäjä näkee äänestystilanteen
+- Käyttötapauksen kulku: 1. Vierailija/Ylläpitäjä valitsee äänestyksen
+                         2. Vierailija/Ylläpitäjä valitsee äänestyksen tilanteen
 
 
 Create vote
@@ -57,7 +56,7 @@ Create vote
 - Esiehto: Ylläpitäjä on kirjautunut sovellukseen
 - Jälkiehto: Uusi äänestys lisätty
 - Käyttötapauksen kulku: 1. Ylläpitäjä kirjautuu sovellukseen
-                         2. Valitsee "Create vote"
+                         2. Valitsee "Lisää äänestyksiä"
                          3. Syöttää äänestystiedot ja lisää äänestyksen
 
 
@@ -68,5 +67,5 @@ Delete vote
 - Esiehto: Ylläpitäjä on kirjautunut sovellukseen
 - Jälkiehto: Valittu äänestys poistettu sovelluksesta
 - Käyttötapauksen kulku: 1. Ylläpitäjä kirjautuu sovellukseen
-                         2. Valitsee "Delete vote"
+                         2. Valitsee "Poista äänestys"
                          3. Valitsee poistettavan äänestyksen ja poistaa sen
