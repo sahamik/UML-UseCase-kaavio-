@@ -1,8 +1,14 @@
 
-// Kirjautumissivulle vieminen
-document.getElementById("adminLoginBtn").addEventListener("click", adminLogin);
 // Äänestysten näyttäminen
 document.getElementById("showVotesBtn").addEventListener("click", showVotes);
+// Äänestysten lisäys lomakkeen näyttäminen
+document.getElementById("addVoteButton").addEventListener("click", showForm);
+// Äänestyksen lisääminen
+document.getElementById("addVoteForm").addEventListener("submit", addVote);
+// Äänestyksen poistaminen
+document.getElementById("deleteVote").addEventListener("click", deleteVote);
+// Kirjautuminen ulos ylläpito sivulta
+document.getElementById("adminLogoutBtn").addEventListener("click", adminLogout);
 
 const voteData = [
     {
@@ -27,7 +33,18 @@ const voteData = [
 
 localStorage.setItem("votes", JSON.stringify(voteData));
 
+function getVotes() {
+    const storedVotes = localStorage.getItem("votes");
+
+    if (storedVotes) {
+        return JSON.parse(storedVotes);
+    } else {
+        return [];
+    }
+}
+
 function showVotes() {
+    document.getElementById("addVote").style.display = "none";
     const votesContainer = document.getElementById("votes");
     const voteList = document.getElementById("voteList");
     const storedVotes = getVotes();
@@ -45,7 +62,6 @@ function showVotes() {
             voteList.appendChild(voteLink);
             voteList.appendChild(document.createElement("br"));
         });
-
         votesContainer.style.display = "block";
     } else {
         console.log("Äänestyksiä ei löytynyt!");
@@ -53,7 +69,6 @@ function showVotes() {
 }   
 
 function viewVoteDetails(vote) {
-    document.getElementById("displayResults").style.display = "none";
     const voteView = document.getElementById("voteView");
     voteView.innerHTML = "";
     const voteTitle = document.createElement("h3");
@@ -95,8 +110,14 @@ function viewVoteDetails(vote) {
     });
     voteView.appendChild(resultsButton);
 
-    voteView.style.display = "block";
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Poista äänestys";
+    deleteBtn.addEventListener("click", () => {
+        deleteVote(vote);
+    });
+    voteView.appendChild(deleteBtn);
 
+    voteView.style.display = "block";
 }
 
 function castVote(vote) {
@@ -173,16 +194,57 @@ function displayResults(vote, voteCount) {
     results.style.display = "block";
 }
 
-function getVotes() {
-    const storedVotes = localStorage.getItem("votes");
+function showForm() {
+    document.getElementById("votes").style.display = "none";
+    document.getElementById("voteView").style.display = "none";
+    document.getElementById("displayResults").style.display = "none";
+    document.getElementById("addVote").style.display = "block";
+}
 
-    if (storedVotes) {
-        return JSON.parse(storedVotes);
-    } else {
-        return [];
+function addVote(event) {
+    event.preventDefault();
+
+    const voteTitle = document.getElementById("voteTitle").value;
+    const voteQuestion = document.getElementById("voteQuestion").value;
+    const voteOptions = document.getElementById("voteOptions").value.split(",");
+
+    if (voteTitle && voteQuestion && voteOptions.length > 1) {
+        const newVote = {
+            id: Date.now(),
+            title: voteTitle,
+            question: voteQuestion,
+            options: voteOptions
+        };
+        const storedVotes = getVotes();
+
+        storedVotes.push(newVote);
+        localStorage.setItem("votes", JSON.stringify(storedVotes));
+
+        document.getElementById("voteTitle").value = "";
+        document.getElementById("voteQuestion").value = "";
+        document.getElementById("voteOptions").value = "";
+
+        showVotes();
     }
 }
 
-function adminLogin() {
-    window.location.href = "login.html";
+function deleteVote(vote) {
+    const storedVotes = getVotes();
+    const voteId = vote.id;
+
+    for (let i = 0; i < storedVotes.length; i++) {
+        if (storedVotes[i].id === voteId) {
+            storedVotes.splice(i, 1);
+            break;
+        }
+    }
+    localStorage.setItem("votes", JSON.stringify(storedVotes));
+    document.getElementById("voteView").style.display = "none";
+    document.getElementById("displayResults").style.display ="none";
+
+    showVotes();
+}
+
+function adminLogout() {
+    window.location.href = "index.html";
 }

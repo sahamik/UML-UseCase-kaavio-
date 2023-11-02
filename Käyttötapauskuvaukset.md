@@ -5,14 +5,13 @@ Käyttötapauskuvaukset
 Browse votes
 
 - Käyttäjä: Vierailija ja ylläpitäjä
-- Laukaisija: Kun kirjaudutaan sovellukseen sisään. Kaksi kirjautumisvaihtoehtoa: Vierailijat sekä Ylläpito.
-- Esiehto: Jos kirjautuja on vierailija --> Pystyy selaamaan äänestyksiä, näkee äänestystilanteen sekä pystyy         äänestämään.
-           Jos kirjautuja ylläpitäjä --> Pystyy selaamaan äänestyksiä sekä tekemään muutoksia äänestyksiin.
+- Laukaisija: Kun sovellus avataan.
+- Esiehto: Jos käyttäjä on vierailija --> Pystyy selaamaan äänestyksiä, näkee äänestystilanteen sekä pystyy         äänestämään.
+           Jos ylläpitäjä kirjautuu sisään linkin kautta --> Pystyy selaamaan äänestyksiä sekä tekemään muutoksia äänestyksiin.
 - Käyttötapauksen kulku: 
     Vierailija: 1. Avaa sovelluksen
-                2. Kirjautuu sisään vierailijana
-                3. Vierailija valitsee Browse votes
-                4. Sovellus näyttää listan äänestyksistä
+                2. Vierailija valitsee Browse votes
+                3. Sovellus näyttää listan äänestyksistä
 
     Ylläpito:   1. Avaa sovelluksen
                 2. Kirjautuu sisään ylläpitäjänä
@@ -54,7 +53,7 @@ Show voting status
 Create vote
 
 - Käyttäjä: Ylläpitäjä
-- Laukaisija: Ylläpitäjä kirjautuu sovellukseen ja valitsee "Create vote"
+- Laukaisija: Ylläpitäjä kirjautuu ylläpitäjänä ja valitsee "Create vote"
 - Esiehto: Ylläpitäjä on kirjautunut sovellukseen
 - Jälkiehto: Uusi äänestys lisätty
 - Käyttötapauksen kulku: 1. Ylläpitäjä kirjautuu sovellukseen
@@ -65,7 +64,7 @@ Create vote
 Delete vote
 
 - Käyttäjä: Ylläpitäjä
-- Laukaisija: Ylläpitäjä kirjautuu sovellukseen ja valitsee "Delete vote"
+- Laukaisija: Ylläpitäjä kirjautuu ylläpitäjänä ja valitsee äänestyksen ja sen jälkeen "Delete Vote"
 - Esiehto: Ylläpitäjä on kirjautunut sovellukseen
 - Jälkiehto: Valittu äänestys poistettu sovelluksesta
 - Käyttötapauksen kulku: 1. Ylläpitäjä kirjautuu sovellukseen
